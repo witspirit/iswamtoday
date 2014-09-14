@@ -19,7 +19,8 @@
 
     <modules>
         <module>api</module>
-    </modules>
+    <module>api2</module>
+  </modules>
 
     <build>
         <plugins>

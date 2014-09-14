@@ -22,12 +22,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="api" />
         <module name="api (1)" />
+        <module name="api2" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="api" target="1.7" />
       <module name="api (1)" target="1.7" />
+      <module name="api2" target="1.7" />
+      <module name="project-root" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
