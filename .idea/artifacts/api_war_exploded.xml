@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="api:war exploded">
+    <output-path>$PROJECT_DIR$/target/api-1.0-SNAPSHOT</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="project-root/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="project-root" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.google.appengine:appengine-api-1.0-sdk:1.9.10" />
+          <element id="library" level="project" name="Maven: com.google.appengine:appengine-endpoints:1.9.10" />
+          <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
