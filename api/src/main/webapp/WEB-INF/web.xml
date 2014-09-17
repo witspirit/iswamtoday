@@ -4,7 +4,7 @@
         <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
         <init-param>
             <param-name>services</param-name>
-            <param-value>be.witspirit.iswamtoday.YourFirstAPI, be.witspirit.iswamtoday.service.SwimLogService</param-value>
+            <param-value>be.witspirit.iswamtoday.service.SwimLogService</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>
