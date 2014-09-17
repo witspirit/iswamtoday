@@ -17,7 +17,7 @@ import java.util.List;
  * API Definition of the Log operations
  */
 @Api(name = "swimLog", version = "v1",
-        scopes = {AuthScopes.PROFILE},
+        scopes = {AuthScopes.EMAIL, AuthScopes.PROFILE},
         clientIds = {Constants.WEB_CLIENT_ID, Constants.ANDROID_CLIENT_ID, Constants.IOS_CLIENT_ID, Constants.API_EXPLORER_CLIENT_ID},
         audiences = {Constants.ANDROID_AUDIENCE},
         description = "Perform Swim Log operations",
