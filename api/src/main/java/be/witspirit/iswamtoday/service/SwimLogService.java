@@ -5,6 +5,7 @@ import be.witspirit.iswamtoday.google.Constants;
 import be.witspirit.iswamtoday.model.AccumulatedDistance;
 import be.witspirit.iswamtoday.model.SwimEntry;
 import com.google.api.server.spi.config.Api;
+import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
 import com.google.appengine.api.oauth.OAuthRequestException;
 import com.google.appengine.api.users.User;
@@ -22,18 +23,20 @@ import java.util.List;
         audiences = {Constants.ANDROID_AUDIENCE},
         description = "Perform Swim Log operations",
         namespace = @ApiNamespace(ownerDomain = "be.witspirit.iswamtoday", ownerName = "witspirit")
+        // Configuring the root is currently limited and hence, the default seems to be the most sensible to use
 )
 public class SwimLogService {
 
     private List<SwimEntry> entries = new ArrayList<>();
 
-    public SwimEntry log(User user, @Named("swimDate") String date, @Named("distance") int distance) throws OAuthRequestException {
+    @ApiMethod(path = "logs")
+    public SwimEntry log(User user, SwimEntry logEntry) throws OAuthRequestException {
         requireUser(user);
-        SwimEntry entry = SwimEntry.parse(date, distance);
-        entries.add(entry);
-        return entry;
+        entries.add(logEntry);
+        return logEntry;
     }
 
+    @ApiMethod(path = "logs/today/{distance}")
     public SwimEntry logToday(User user, @Named("distance") int distance) throws OAuthRequestException {
         requireUser(user);
         SwimEntry entry = SwimEntry.today(distance);
@@ -41,11 +44,13 @@ public class SwimLogService {
         return entry;
     }
 
+    @ApiMethod(path = "logs")
     public List<SwimEntry> getLogs(User user) throws OAuthRequestException {
         requireUser(user);
         return entries;
     }
 
+    @ApiMethod(path = "total")
     public AccumulatedDistance getTotalDistance(User user) throws OAuthRequestException {
         requireUser(user);
         long total = 0;
@@ -55,6 +60,7 @@ public class SwimLogService {
         return new AccumulatedDistance(total);
     }
 
+    @ApiMethod(path = "test/user")
     public User getUserInfo(User user) throws OAuthRequestException {
         requireUser(user);
         return user;
